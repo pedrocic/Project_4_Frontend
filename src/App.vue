@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <Header title="Webmax" :hideToggle="false" />
+  <div id="app" :class="{ 'hide-menu': !isMenuVisible }">
+    <Header title="Webmax" :hideToggle="false" :hideUserDropdown="false" />
     <Menu />
     <Content />
     <Footer />
@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import Header from "@/components/templates/Header";
 import Menu from "@/components/templates/Menu";
 import Content from "@/components/templates/Content";
@@ -15,7 +16,8 @@ import Footer from "@/components/templates/Footer";
 
 export default {
   name: "App",
-  components: { Header, Menu, Content, Footer }
+  components: { Header, Menu, Content, Footer },
+  computed: mapState(["isMenuVisible"])
 };
 </script>
 
@@ -39,5 +41,12 @@ export default {
     "header header"
     "menu content"
     "menu footer";
+}
+
+#app.hide-menu {
+  grid-template-areas:
+    "header header"
+    "content content"
+    "footer footer";
 }
 </style>
