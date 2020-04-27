@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <Header></Header>
-    <Menu></Menu>
-    <Content></Content>
-    <Footer></Footer>
+    <Header title="Webmax" :hideToggle="false" />
+    <Menu />
+    <Content />
+    <Footer />
   </div>
 </template>
 
